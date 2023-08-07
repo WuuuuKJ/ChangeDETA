@@ -119,5 +119,18 @@ We thank authors of [Meta-Dataset](https://github.com/google-research/meta-datas
 
 
 ## Contact
-If you hava any questions, welcome to contact me with jizhang.jim@gmail.com
+If you hava any questions, welcome to contact me at: jizhang.jim@gmail.com
+
+```
+@inproceedings{guo2021general,
+  title={DETA: Denoised Task Adaptation for Few-Shot Learning},
+  author={Zhang, Ji and Gao, Lianli and Luo, Xu and Shen, Heng Tao and Song, Jingkuan},
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision},
+  year={2023}}
+```
+
+
+
+
+
 
