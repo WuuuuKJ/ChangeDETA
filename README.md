@@ -117,3 +117,7 @@ Specify a pretrained model to be adapted, and execute the following command.
 ## Acknowledge
 We thank authors of [Meta-Dataset](https://github.com/google-research/meta-dataset), [URL/TSA](https://github.com/VICO-UoE/URL), [eTT](https://github.com/loadder/eTT_TMLR2022), [JigsawClustering](https://github.com/dvlab-research/JigsawClustering) for their source code. 
 
+
+## Contact
+If you hava any questions, welcome to contact me with jizhang.jim@gmail.com
+
