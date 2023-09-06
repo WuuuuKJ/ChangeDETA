@@ -119,7 +119,12 @@ We thank authors of [Meta-Dataset](https://github.com/google-research/meta-datas
 
 
 ## Contact
-If you hava any questions, welcome to contact me at: jizhang.jim@gmail.com
+If you hava any questions, you can
+
+* contact me at: jizhang.jim@gmail.com
+* new an issue at: https://github.com/nobody-1617/DETA.
+
+To cite our paper, please use following BibTex:
 
 ```
 @inproceedings{guo2021general,
