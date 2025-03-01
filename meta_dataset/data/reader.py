@@ -504,7 +504,7 @@ class BatchReaderMixin(object):
     #   the last examples are more likely to be dropped than the first ones.
     # In any case, we are handling variable-sized batches just fine, so there
     # is no real reason to drop data.
-    dataset = dataset.batch(batch_size, drop_remainder=False)
+    dataset = dataset.batch(batch_size, drop_remainder=True)
     if not pool:
       dataset = dataset.repeat()
 

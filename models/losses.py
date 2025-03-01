@@ -66,13 +66,13 @@ def distillation_loss(fs, ft, opt='l2', delta=0.5):
 
 
 def cross_entropy_loss(logits, targets):
-    log_p_y = F.log_softmax(logits, dim=1)
-    preds = log_p_y.argmax(1)
+    log_p_y = F.log_softmax(logits, dim=1) # 公式p, 对 logits 在第1维（类别维）进行对数 softmax 操作
+    preds = log_p_y.argmax(1) # 对每个样本的对数概率取最大值索引，得到预测类别标签，形状为 [batch_size]
     labels = targets.type(torch.long)
-    loss = F.nll_loss(log_p_y, labels, reduction='mean')
-    acc = torch.eq(preds, labels).float().mean()
-    stats_dict = {'loss': loss.item(), 'acc': acc.item()}
-    pred_dict = {'preds': preds.cpu().numpy(), 'labels': labels.cpu().numpy()}
+    loss = F.nll_loss(log_p_y, labels, reduction='mean') # 负对数似然损失
+    acc = torch.eq(preds, labels).float().mean() # 准确率
+    stats_dict = {'loss': loss.item(), 'acc': acc.item()} # 统计字典：将损失和准确率从张量中提取为 Python 数值，存入字典。
+    pred_dict = {'preds': preds.cpu().numpy(), 'labels': labels.cpu().numpy()} # 预测字典：将预测结果和真实标签转移到 CPU，并转换为 NumPy 数组，便于后续处理。
     return loss, stats_dict, pred_dict
 
 # logistic regression
@@ -142,7 +142,7 @@ def euclidean_dist(x, y):
 # NCC
 def prototype_loss(support_embeddings, support_labels, query_embeddings, query_labels, patch_weight=None, distance='cos'):
     n_way = len(query_labels.unique())
-    prots = compute_prototypes(support_embeddings, support_labels, n_way).unsqueeze(0)
+    prots = compute_prototypes(support_embeddings, support_labels, n_way).unsqueeze(0) #计算支持集原型
     embeds = query_embeddings.unsqueeze(1)
 
     if distance == 'l2':
@@ -166,6 +166,7 @@ def compute_prototypes(embeddings, labels, n_way):
     prots = torch.zeros(n_way, embeddings.shape[-1]).type(
         embeddings.dtype).to(embeddings.device)
     for i in range(n_way):
+        # embeddings[...].mean(0): 提取对应类别的嵌入向量并沿样本维度（第0维）取均值，得到原型
         if torch.__version__.startswith('1.1'):
             prots[i] = embeddings[(labels == i).nonzero(), :].mean(0)
         else:
